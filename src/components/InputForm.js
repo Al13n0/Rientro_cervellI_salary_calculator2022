@@ -127,7 +127,7 @@ const InputForm = () => {
     return ( 
         <Container>
             <Typography variant="h3" color="textSecondary" component="h1" gutterBottom>
-                Calcolo Stipendio netto 2022
+                Calcolo Stipendio Netto
             </Typography>
                 <form onSubmit={calculateSalary} >
 
