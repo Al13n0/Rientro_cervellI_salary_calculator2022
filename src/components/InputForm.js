@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import MenuItem from '@mui/material/MenuItem';
+import RadioGroup from '@mui/material/RadioGroup';
 
 const InputForm = () => {
     const [salary, setSalary] = useState("");
@@ -28,8 +29,7 @@ const InputForm = () => {
     const [addIrpefRegionale1, setAddIrpefRegionale1] = useState("");
     const [addIrpefComunale1, setAddIrpefComunale1] = useState("");
     const [detrazioniLavDipentente1, setDetrazioniLavDipentente1] = useState("");
-
-
+    const [sudIsole, setIsSudIsole] = useState(false);
     const [isShown, setIsShown] = useState(false);
 
     const calculateSalary = (e)=> {
@@ -44,7 +44,6 @@ const InputForm = () => {
         setDetrazioniLavDipentente(calculateDetrazioniLavDipendente())
 
         //rientro cervelli
-
 
         let imponibile1 = (salary - calculateInps()) * 0.30
      
@@ -107,7 +106,7 @@ const InputForm = () => {
             detrazione = 1880
         else if (salary>15000 && salary <28000)
             detrazione = 1910 + 1190 * [(28000 - salary) / 13000]
-        else if (salary> 28000 && salary < 50000 )
+        else if (salary>= 28000 && salary < 50000 )
             detrazione = 1910 * [(50000 - salary)/22000]
         else if (salary > 55000)
             detrazione = 0
@@ -133,6 +132,8 @@ const InputForm = () => {
 
                     <TextField id="standard-basic" required label="RAL" variant="standard" value={salary}  onChange={(e) => setSalary(e.target.value)} />
                     <TextField id="standard-basic" required label="Mensilità" sx={{'margin-left':'20px'}} value = {mensilita} variant="standard"  onChange={(e) => setMensilita(e.target.value)}></TextField>
+                    
+                    
 
                     <Button  onClick= {handleClick} type="submit" variant="contained" disableElevation endIcon={<SendIcon/>}  sx={{ m: 1 }} >Calcola </Button>
            
